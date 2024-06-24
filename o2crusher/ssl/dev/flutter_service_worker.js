@@ -6,11 +6,7 @@ const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {"assets/AssetManifest.bin": "845946083ca7a3f064dd2caa723fa2e4",
 "assets/AssetManifest.bin.json": "8f261e145643efd7fdfb586e5d895ce7",
 "assets/AssetManifest.json": "ae916ff780e74c6016acb9f904390fac",
-<<<<<<< HEAD
-"assets/assets/build_date.txt": "5c58827cf32f1ec24dee1d254d2553fd",
-=======
-"assets/assets/build_date.txt": "72a62fa6727a1fd10425d4fb78e3f481",
->>>>>>> e2881ca45e022369f55cd121e83a39c4b6079ddb
+"assets/assets/build_date.txt": "9dfbb1ca028e815f7668de5c728eef97",
 "assets/assets/env.json": "ab10a91cd43c32a5f87087e31cd6e890",
 "assets/assets/fonts/Quicksand-Bold.ttf": "410a26014ce7e25824ae18349d2c92d3",
 "assets/assets/fonts/Quicksand-Light.ttf": "7dcc3e19fb99b72cf354f6caee2df104",
@@ -31,17 +27,10 @@ const RESOURCES = {"assets/AssetManifest.bin": "845946083ca7a3f064dd2caa723fa2e4
 "assets/assets/images/ssl/notification_logo.png": "c28352ea736e675c1d3a9a230a8d9dd8",
 "assets/FontManifest.json": "dfc991a797e74c8d26bc2855fbebaf59",
 "assets/fonts/MaterialIcons-Regular.otf": "86be2260019467b58024650b4371645a",
-<<<<<<< HEAD
 "assets/NOTICES": "8740de88080b7133faa9fb500a81dbfe",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "401abeadd5ae101ae712d55ebe88d167",
 "assets/packages/fluttertoast/assets/toastify.css": "910ddaaf9712a0b0392cf7975a3b7fb5",
 "assets/packages/fluttertoast/assets/toastify.js": "18cfdd77033aa55d215e8a78c090ba89",
-=======
-"assets/NOTICES": "90981cda61f4e4c05b526c9c5bb1cd3a",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "ac3cc4bc909f64da755553cd716f4118",
-"assets/packages/fluttertoast/assets/toastify.css": "a85675050054f179444bc5ad70ffc635",
-"assets/packages/fluttertoast/assets/toastify.js": "56e2c9cedd97f10e7e5f1cebd85d53e3",
->>>>>>> e2881ca45e022369f55cd121e83a39c4b6079ddb
 "assets/packages/flutter_image_compress_web/assets/pica.min.js": "6208ed6419908c4b04382adc8a3053a2",
 "assets/packages/flutter_inappwebview/assets/t_rex_runner/t-rex.css": "5a8d0222407e388155d7d1395a75d5b9",
 "assets/packages/flutter_inappwebview/assets/t_rex_runner/t-rex.html": "16911fcc170c8af1c5457940bd0bf055",
@@ -66,15 +55,9 @@ const RESOURCES = {"assets/AssetManifest.bin": "845946083ca7a3f064dd2caa723fa2e4
 "icons/Icon-512.png": "af2784569f90333c91c387cc646db9d0",
 "icons/Icon-maskable-192.png": "d6240835d53761a4c555900e01b1d759",
 "icons/Icon-maskable-512.png": "af2784569f90333c91c387cc646db9d0",
-<<<<<<< HEAD
-"index.html": "3c36d0167e2a63d9a2ae0a3bf386397b",
-"/": "3c36d0167e2a63d9a2ae0a3bf386397b",
-"main.dart.js": "fbba00300f43566b86636281c91fa261",
-=======
-"index.html": "c5867361e01a6a64098d86941e04684b",
-"/": "c5867361e01a6a64098d86941e04684b",
-"main.dart.js": "923f45a90fda546f0ae1dcd096253f75",
->>>>>>> e2881ca45e022369f55cd121e83a39c4b6079ddb
+"index.html": "d0a71b420edea032ba32bfb03e9ff587",
+"/": "d0a71b420edea032ba32bfb03e9ff587",
+"main.dart.js": "ffc761323073c31cb7fac8d58251cb7e",
 "manifest.json": "de96762ef8c5fa4f4b9c6ec008988a81",
 "version.json": "00afd223cdfd9cc2b3e74d81817cc29d"};
 // The application shell files that are downloaded before a service worker can

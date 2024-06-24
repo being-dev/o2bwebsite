@@ -2162,7 +2162,6 @@ SOFTWARE.
 --------------------------------------------------------------------------------
 barcode
 pdf
-pdf_widget_wrapper
 printing
 
                                  Apache License
@@ -4951,7 +4950,7 @@ image_picker_platform_interface
 image_picker_windows
 local_auth
 local_auth_android
-local_auth_darwin
+local_auth_ios
 local_auth_platform_interface
 local_auth_windows
 path_provider
@@ -8915,7 +8914,6 @@ SOFTWARE.
 flutter_image_compress
 flutter_image_compress_common
 flutter_image_compress_macos
-flutter_image_compress_ohos
 flutter_image_compress_platform_interface
 flutter_image_compress_web
 
@@ -33350,7 +33348,6 @@ logger
 MIT License
 
 Copyright (c) 2019 Simon Leier
-Copyright (c) 2019 Harm Aarts
 Copyright (c) 2023 Severin Hamader
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34276,30 +34273,6 @@ platform_detect
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
---------------------------------------------------------------------------------
-pointycastle
-
-
-Copyright (c) 2000 - 2019 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 
 --------------------------------------------------------------------------------
 qr
