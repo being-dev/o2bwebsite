@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>O2BizServices</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- Favicons -->
+    <link href="../../assets/img/title.png" rel="icon">
+    <link href="../../assets/img/title.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="../../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Template Main CSS File -->
+    <link href="../../assets/css/style.css" rel="stylesheet">
+
+    <script>
+        if (location.protocol == 'http:') {
+            location.href = location.href.replace("http", "https");
+        }
+        UAT_URL =
+            'https://ut8olba8ia.execute-api.us-east-2.amazonaws.com/uat/api/v1';
+
+        function stopSpinning() {
+
+        }
+
+        function checkStatus() {
+            var element = document.getElementById("btnloading");
+            // element.classList.add("fa", "fa-spin", "fa-spinner");
+            document.getElementById("searchBtn").innerHTML = 'Loading'
+            var vehicleNo = document.getElementById('vehicleNo').value;
+            let fetchRes = fetch(UAT_URL + "/SSL/admin/web/user/get-vehicle-status", {
+                method: "POST",
+                body: JSON.stringify({
+                    vehicleNo: vehicleNo
+                })
+            });
+            fetchRes.then(res =>
+                res.json()).then(d => {
+                    // element.classList.remove("fa-spinner");
+                    document.getElementById("searchBtn").innerHTML = 'Search'
+                    alert("Data Loaded: " + d);
+                })
+        }
+    </script>
+
+</head>
+<style>
+    body {
+
+        background: #d1d5db;
+    }
+
+    .height {
+
+        height: 100vh;
+    }
+
+    .form {
+
+        position: relative;
+    }
+
+    .form .fa-search {
+
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: #9ca3af;
+
+    }
+
+    .form span {
+
+        position: absolute;
+        right: 17px;
+        top: 13px;
+        padding: 2px;
+        border-left: 1px solid #d1d5db;
+
+    }
+
+    .left-pan {
+        padding-left: 7px;
+    }
+
+    .left-pan i {
+
+        padding-left: 10px;
+    }
+
+    .form-input {
+
+        height: 55px;
+        text-indent: 33px;
+        border-radius: 10px;
+    }
+
+    .form-input:focus {
+
+        box-shadow: none;
+        border: none;
+    }
+
+    .buttonload {
+        background-color: #04AA6D;
+        /* Green background */
+        border: none;
+        /* Remove borders */
+        color: white;
+        /* White text */
+        padding: 12px 16px;
+        /* Some padding */
+        font-size: 16px
+            /* Set a font size */
+    }
+</style>
+
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex">
+
+            <div class="logo mr-auto">
+                <h1 class="text-light"><a href="../../index.html"><img src="../../assets/img/logo.png" alt=""
+                            class="img-fluid"></a>
+                </h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header><!-- End Header -->
+
+    <div class="container">
+        <div class="row height d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="form">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="vehicleNo" id="vehicleNo" class="form-control form-input"
+                        placeholder="Search Vehicle Status...">
+                </div>
+            </div>
+            <button id="searchBtn" type="button" class="buttonload" onclick="checkStatus()">
+                <i class="" id="btnloading"></i> Search
+            </button>
+
+        </div>
+
+    </div>
+    <!-- ======= Footer ======= -->
+    <footer id="footer" style="background-color:white;margin-top:15px">
+        <div class="container">
+            <div class="row">
+
+                <div class="copyright col-lg-6">
+                    &copy; Copyright <strong><span>O2bizservices</span></strong>. All Rights Reserved
+                </div>
+
+            </div>
+    </footer><!-- End Footer -->
+</body>
+
+</html>

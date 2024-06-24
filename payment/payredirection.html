@@ -1,0 +1,19 @@
+<html>
+<head>
+<script>
+function redirectToPay(){
+
+	var result = window.location.search.substr(1);
+	var form = document.createElement("form");
+	form.method = "POST";
+	form.id="nonseamless";
+	form.name="redirect";
+	form.action = atob(result);   
+	document.body.appendChild(form);
+	form.submit();	
+}
+</script>
+<body onload="redirectToPay()">
+<h1>Payment is Loading. Please Wait.....</h1>
+</body>
+</html>

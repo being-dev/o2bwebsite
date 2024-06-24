@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Swarajya Stone LLP Payment Receipt</title>
+	<link href="https://o2bizservices.com/assets/img/ssl_logo.png" rel="icon">
+	<style>
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  color: #0087C3;
+  text-decoration: none;
+}
+
+body {
+  position: relative;
+  width: 21cm;  
+  height: 29.7cm; 
+  margin: 0 auto; 
+  background: #FFFFFF; 
+  font-family: Arial, sans-serif; 
+  font-size: 12px; 
+  font-family: SourceSansPro;
+}
+
+header {
+  padding: 2px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #AAAAAA;
+}
+
+#logo {
+  float: right;
+  margin-top: 8px;
+}
+
+#logo img {
+  height: 110px;
+}
+
+#company {
+  float: left;
+  text-align: left;
+}
+
+#client {
+  padding-left: 6px;
+  border-left: 6px solid #0087C3;
+  float: left;
+}
+
+#client .to {
+  color: #777777;
+}
+
+h2.name {
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0;
+}
+
+#invoice {
+  float: right;
+  text-align: right;
+}
+
+#invoice h1 {
+  color: #0087C3;
+  font-size: 2.4em;
+  line-height: 1em;
+  font-weight: normal;
+  margin: 0  0 10px 0;
+}
+
+#invoice .date {
+  font-size: 1.1em;
+  color: #777777;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 9px;
+  background: #EEEEEE;
+  text-align: center;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+table th {
+  white-space: nowrap;        
+  font-weight: normal;
+}
+
+table td {
+  text-align: right;
+}
+
+table td h3{
+  color: #57B223;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 0 0.2em 0;
+}
+
+table .no {
+  color: #FFFFFF;
+  font-size:15px;
+  background: #FF7F50;
+   width:10%
+}
+
+table .desc {
+  text-align: center;
+  width:30%;
+  font-size:14px;
+}
+
+table .unit {
+  background: #DDDDDD;
+}
+
+table .qty {
+}
+
+table .total {
+  text-align: left;
+    width:30%
+}
+
+table td.unit,
+table td.qty,
+table td.total {
+  font-size: 1.2em;
+}
+
+table tbody tr:last-child td {
+  border: none;
+}
+
+table tfoot td {
+  padding: 10px 20px;
+  background: #FFFFFF;
+  border-bottom: none;
+  font-size: 1.2em;
+  white-space: nowrap; 
+  border-top: 1px solid #AAAAAA; 
+}
+
+table tfoot tr:first-child td {
+  border-top: none; 
+}
+
+table tfoot tr:last-child td {
+  color: #57B223;
+  font-size: 1.4em;
+  border-top: 1px solid #57B223; 
+
+}
+
+table tfoot tr td:first-child {
+  border: none;
+}
+
+#thanks{
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+#notices{
+  padding-left: 6px;
+  border-left: 6px solid #0087C3;  
+}
+
+#notices .notice {
+  font-size: 1.2em;
+}
+
+footer {
+  color: #777777;
+  width: 100%;
+  height: 30px;
+  bottom: 0;
+  border-top: 1px solid #AAAAAA;
+  padding: 8px 0;
+  text-align: center;
+  margin-top:25px;
+}
+.button {
+  background-color: #FF7F50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+	</style>
+
+  </head>
+  <body >
+  <div style="border: 2px dashed #FF7F50;padding:7px;margin-top: 50px;">
+   
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <h2 class="name" id="InvalidStatus"></h2>
+        </div>
+      </div>
+	  
+     <div id="content"></div>
+	 
+	  <div id="invoiceid" style="text-align:center"></div>
+	</main>
+   </div>
+   <script>
+		var result = window.location.search.substr(1);
+		var result1 = atob(result);
+		var data = JSON.parse(result1);		
+		//document.getElementById("paystatus").innerHTML="Payment Status : "+data["Status"];
+		if(data["Status"] == "INVALID"){
+			document.getElementById("InvalidStatus").innerHTML="Your Payment Status is Invalid. Please go to Home Page and start transaction again.";
+		}else{		
+			var table =  '<table border="0" cellspacing="0" cellpadding="0"><tbody>'+
+			'<tr><td class="no">Order ID</td><td class="total">'+data["OrderID"]+'</td></tr>'+
+			'<tr><td class="no">Payment Status </td><td class="total">'+data["Status"]+'</td></tr>'+
+			'<tr><td class="no">Amount </td><td class="total">'+data["Amount"]+' Rs</td></tr>'+
+			'<tr><td class="no">Payment Mode </td><td class="total">'+data["mode"]+'</td></tr>';		
+			if(data["Status"] == "SUCCESS"){
+				table=table + '<tr><td class="no">Receipt No </td><td class="total">'+data["Invoice"]+'</td></tr>';
+			}else{
+				var msg = data["msg"] == 'null' ? '' : data["msg"];
+				table=table + '<tr><td class="no">Failure Message </td><td class="total">'+msg +'</td></tr>';		
+			}
+				table = table + '</tbody>';
+				document.getElementById("content").innerHTML=table;	
+
+			if(data["Status"] == "SUCCESS"){
+				document.getElementById("invoiceid").innerHTML= '<input type="button" class="button" value="Download Payment Advice"  onclick="downloadInvoice(this)">';
+			}			
+		}
+		
+		function downloadInvoice(obj,result){
+			if(localStorage.getItem("flutter.token") == null){
+				alert("Your url session has expire, Please login to portal and download Receipt.");
+			}else{
+				var result = window.location.search.substr(1);
+				var result1 = atob(result);
+				var data = JSON.parse(result1);			
+				var params = {};
+				params['orderid'] = data["OrderID"];
+				obj.value = 'Please Wait....';
+				obj.disabled=true
+				const xhttp = new XMLHttpRequest();
+				xhttp.open("POST", data["url"]+"/paymentinvoice");
+				xhttp.setRequestHeader('token', localStorage.getItem("flutter.token").replaceAll("\"", ""));
+				xhttp.send(JSON.stringify(params))
+				xhttp.onload = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						obj.value = 'Download Receipt';
+						obj.disabled=false;
+						var arrayStr = this.responseText;
+						var array = JSON.parse(arrayStr);
+						const linkSource = "data:application/"+array[0].toLowerCase()+";base64,"+array[2].replaceAll('"','');
+						const downloadLink = document.createElement("a");
+						const fileName = array[1];
+						downloadLink.href = linkSource;
+						downloadLink.download = fileName;
+						downloadLink.click();﻿	
+					}else{
+						alert("Your url session has expire, Please login to portal and Download Receipt.");
+					}
+				}
+			}
+		}
+	</script>
+  </body>
+</html>

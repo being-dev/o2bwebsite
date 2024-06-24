@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>O2BizServices</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../assets/img/title.png" rel="icon">
+    <link href="../assets/img/title.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="../constants.js"></script>
+
+    <!-- Template Main CSS File -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+
+    <script>
+        if (location.protocol == 'http:') {
+            location.href = location.href.replace("http", "https");
+        }
+        function checkStatus() {
+            PROD_URL =
+                'https://t21urj33n9.execute-api.ap-south-1.amazonaws.com/prod/api/v1';
+            var vehicleNo = document.getElementById('vehicleNo').value;
+            let fetchRes = fetch(PROD_URL + "/SSL/admin/web/user/get-vehicle-status", {
+                method: "POST",
+                body: JSON.stringify({
+                    vehicleNo: vehicleNo
+                })
+            });
+            fetchRes.then(res =>
+                res.json()).then(d => {
+                    alert("Data Loaded: " + d);
+                })
+        }
+    </script>
+
+</head>
+<style>
+    body {
+
+        background: #d1d5db;
+    }
+
+    .height {
+
+        height: 100vh;
+    }
+
+    .form {
+
+        position: relative;
+    }
+
+    .form .fa-search {
+
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: #9ca3af;
+
+    }
+
+    .form span {
+
+        position: absolute;
+        right: 17px;
+        top: 13px;
+        padding: 2px;
+        border-left: 1px solid #d1d5db;
+
+    }
+
+    .left-pan {
+        padding-left: 7px;
+    }
+
+    .left-pan i {
+
+        padding-left: 10px;
+    }
+
+    .form-input {
+
+        height: 55px;
+        text-indent: 33px;
+        border-radius: 10px;
+    }
+
+    .form-input:focus {
+
+        box-shadow: none;
+        border: none;
+    }
+</style>
+
+
+<body>
+    <div class="container">
+        <div class="row height d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="form">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="vehicleNo" id="vehicleNo" class="form-control form-input"
+                        placeholder="Search Vehicle Status...">
+                    <span class="left-pan"><button type="search" class="btn btn-primary"
+                            onclick="checkStatus()">Search</button></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

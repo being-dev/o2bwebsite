@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>O2crusher Admin Portal</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link href="./css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="h-100">
+    <div class="authincation h-100">
+        <div class="container-fluid h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="authincation-content">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+                                    <h4 class="text-center mb-4">O2Crusher Admin Portal</h4>
+                                    <form action="index.html">
+										<div class="form-group">
+                                            <label><strong>Code</strong></label>
+                                            <input type="text" id="code" class="form-control" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label><strong>Mobile No</strong></label>
+                                            <input type="text" id="mobile" class="form-control" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label><strong>Password</strong></label>
+                                            <input type="password" id="pass" class="form-control">
+                                        </div>
+                                        
+                                        <div class="text-center">
+                                            <button id="btnsignin" class="btn btn-primary btn-block">Sign In</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+	<div class="modal fade" id="otpModalDialog" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+						 <form name="userDetailsForm" id="userDetailsForm" method="post" onsubmit="return submitOtp()">    
+								<div class="modal-header">
+									<h5 class="modal-title">2-Step Verification, Please enter OTP received on your Mobile</h5>
+									<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+								</div>
+								<div class="modal-body">
+									<div class="card-body">
+										<div class="basic-form">										   
+												<div class="row">
+													<div class="form-group col-md-6">
+														<label class="form-label" for="txtMobile">OTP <span class="required">(*)</span></label>
+														<input type="text" id="txtotp" name="txtotp" class="form-control">
+													 </div>
+												</div>											
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+									<button type="button" id="btnOtplogin" class="btn btn-primary">Verify Login</button>
+								</div>
+							</form>
+                        </div>
+                    </div>
+                </div>
+	
+
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="./vendor/global/global.min.js"></script>
+    <script src="./js/quixnav-init.js"></script>
+    <script src="./js/custom.min.js"></script>
+	<script src="js/common.js"></script>
+    <script src="js/manage-users.js"></script>
+	<script>
+	setTimeout(() => {
+			$("#code").focus();
+	}, 1000);
+	</script>
+</body>
+
+</html>

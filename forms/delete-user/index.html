@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>O2Crusher</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./login.css">
+  <link rel="stylesheet" href="./otp.css">
+</head>
+<body>
+	<div class="main" id='loginForm'>  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+			<div class="signup">
+				<section>
+					<form>
+						<br>
+						<img src="./app_logo.png" alt="O2Crusher" style="width: 80px;" class="center">
+						<label>Login</label>
+						<input type="text" id= "code"  name="code" placeholder="Client Code" required="">
+						<input type="text" id= "mobile" name="mobile" placeholder="Mobile Number" required="" pattern="[0-9]{10}"  title="Enter valid mobile number">
+						<input type="password" id= "password"  name="password" placeholder="Password" required="">
+						<button id="loginBtn" onclick="return loginApi()">Login</button>
+						<div id="loginloader" class="loader" style="display: none;"></div>
+					</form>
+				</section>
+			</div>
+			<div class="login">
+					<label>O2Crusher</label>
+			</div>
+	</div>
+	<div class="main" id='otpForm' style="display: none;height: 300px;">  	
+		<div class="signup">
+			<section>
+				<form>
+					<label style="margin-bottom: -10px;margin-top: 50px;">OTP</label>
+					<input type="text" id= "otp" name="otp" placeholder="Enter OTP" required="" pattern="[0-9]{6}"  title="Enter valid OTP">
+					<button id="optBtn" onclick='return otpApi()' style="margin-top: 10px;">Validate</button>
+					<a href="#" onclick="hideShow('otpForm','loginForm')"> <u id="goback" style="color: rgb(255, 75, 75); margin-top: 20px;display: block;text-align: center;">Go Back</u></a>
+					<div id="otploader" class="loader" style="display: none;"></div>
+				</form>
+			</section>
+		</div>
+	</div>
+	<div class="main" id='mainForm' style="display: none;width: auto; height: auto;padding: 40px;">  	
+		<div class="signup">
+			<section>
+				<form>
+					<h2 style="margin-bottom: -10px;margin-top: 50px; padding-bottom: 50px; color: white;">Delete Account?</h2>
+					<button id="dltBtn" type="button" data-toggle="modal" data-target="#confirmModal" style="margin-top: 10px; margin-bottom: 70px;">Delete Account</button>
+					<div id="dltloader" class="loader" style="display: none;"></div>
+					<!-- confirm modal start -->
+							<div class="modal fade" id="confirmModal" role="dialog">
+								<div class="modal-dialog" role="document">
+								  <div class="modal-content">
+									<div class="modal-header">
+									  <h3 class="modal-title" style="text-align: center;">Are you sure want to delete account? </h3>
+									  <br>
+									  <p style="text-align: center;">Deletion of account will be lost all details of account.</p>
+									</div>
+									<div class="modal-footer justify-content-between" style="text-align: center;">
+									  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="return deleteApi()">Confirm</button>
+									  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+									</div>
+								  </div>
+								</div>
+							  </div>
+					<!-- modal end -->
+				</form>
+			</section>
+		</div>
+	</div> 
+</body>
+
+<script type="text/javascript">
+
+	var domainUrl = atob(window.location.search.substring(1));
+	
+	function hideShow(hideId,showId) {
+		if(hideId != ""){
+		var hide = document.getElementById(hideId);
+		if (hide.style.display === "none") {
+			hide.style.display = "block";
+		} else {
+			hide.style.display = "none";
+		}}
+
+		if(showId != ""){
+		var show = document.getElementById(showId);
+		if (show.style.display === "block") {
+			show.style.display = "none";
+		} else {
+			show.style.display = "block";
+		}}
+	}
+
+	function loginApi(){
+		if($("#code").val() =="" || $("#mobile").val() =="" || $("#password").val()==""){
+			return alert("Please enter Code, Mobile Number and Password")
+		}else{
+			hideShow("loginBtn","loginloader") //hiding btn and showing loader
+			var t = {};
+			t.mobile = $("#mobile").val(),
+			t.password = $("#password").val(),
+			$.ajax({
+				url: domainUrl + "/" + $("#code").val() + "/admin/web/user/login",
+				type: "post",
+				headers: {
+            		data: "Y"
+				},
+				data: JSON.stringify(t),
+				complete: function(e) {
+					if(e.status ==200) { 
+						sessionStorage.setItem("id",e.responseJSON)
+						hideShow("loginloader","loginBtn")//hiding loader and showing btn
+						hideShow("loginForm","otpForm") //hiding login and showing otp screen
+					}else{
+						hideShow("loginBtn","loginloader")
+						return alert(e.responseJSON)
+					}
+				}
+			});
+			return false;
+		}
+	}
+
+	function otpApi(){
+		if($("#otp").val().length != 6 ){
+			return alert("Please enter valid 6 digit OTP")
+		}else{
+			hideShow('goback','otploader');
+			hideShow('optBtn','');
+			var t = {};
+			t.otp = $("#otp").val()
+			$.ajax({
+				url: domainUrl + "/" + $("#code").val() + "/admin/web/user/loginotp-delete-user",//https://mwc1v299d8.execute-api.us-east-2.amazonaws.com/uat/api/v1/SSL/admin/web/user/loginotp-delete-user",
+				type: "post",
+				headers: {
+            		data: sessionStorage.getItem("id")
+				},
+				data: JSON.stringify(t),
+				complete: function(e) {
+					if(e.status ==200) {
+						$("#mobile").val('');
+						$("#password").val('');
+						$("#otp").val('');
+						hideShow('otploader','goback');
+						hideShow('mainForm','otpForm');
+					}else{
+						hideShow('otploader','goback');
+						hideShow('','optBtn');
+						return alert(e.responseJSON)}
+				}
+			});
+			return false;
+		}
+	}
+
+	function deleteApi(){
+			hideShow('dltBtn','dltloader');
+			$.ajax({
+				url: domainUrl + "/" + $("#code").val() + "/admin/web/user/delete-user2",
+				type: "post",
+				headers: {
+            		data: sessionStorage.getItem("id")
+				},
+				complete: function(e) {
+				hideShow('dltloader','dltBtn');
+					if(e.status ==200) {
+						alert(e.responseJSON);
+						$("#code").val('');
+						hideShow('dltloader','dltBtn');
+						hideShow('loginForm','mainForm');
+						sessionStorage.clear();
+					}else{
+						return alert(e.responseJSON)
+					}
+				}
+			});
+			return false;
+	}
+</script>
+</html>

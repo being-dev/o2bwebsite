@@ -1,0 +1,65 @@
+.contactBtn {
+  align-self: center;
+}
+.smContact {
+  display: none;
+}
+
+.featureCard {
+}
+
+.featureCard_title {
+  font-weight: 500 !important;
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+  color: black;
+}
+.featureCard_content {
+  --tw-text-opacity: 1 !important;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+  margin-top: 0.5rem !important;
+}
+.featureCard_logo {
+  color: blue;
+}
+
+.featureCard:hover .featureCard_title {
+  color: white;
+}
+.featureCard:hover .featureCard_content {
+  color: white;
+}
+.featureCard:hover .featureCard_logo {
+  color: white;
+}
+
+.serviceImg {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.serviceImg:hover {
+  transform: scale(1.5);
+}
+
+.headerimg-height {
+}
+.menuLogoWidth {
+  width: 15%;
+}
+.headerHideShowText {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .headerimg-height {
+    height: 600px;
+  }
+  .menuLogoWidth {
+    width: 40%;
+  }
+  .headerHideShowText {
+    display: none;
+  }
+}

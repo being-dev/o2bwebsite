@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script>
+var summaryDate="";
+var key="";
+	if(window.location.search == '?SHR'){
+		key="shreeconstruction";
+	}else{
+		alert('Some thing went wrong, Please contact O2Biz');
+	}	
+	if(key != ""){
+		var url = "https://"+key+".github.io/ThiefTracking/";	
+		var finalJson = $.getJSON(url+"info.json");
+		
+		finalJson.done(function(json) {
+			$.each(json, function(idx, obj) {
+			if(idx == "from"){
+				summaryDate = summaryDate +obj+" To ";
+			}
+			if(idx == "to"){
+				summaryDate = summaryDate +obj;
+				$("#summaryDate").html(summaryDate);
+			}
+			var divContent='';
+			if(idx == "data"){
+				$.each(obj, function(key, val) {				
+					$.each(val, function(key1, val1) {					
+							$.each(val1, function(key2, val2) {
+								console.log(val2);
+								divContent = divContent + imageLoc(url+key+"/"+key1+"/",val2);
+							});
+					});
+				
+				});
+				$("#imgid").html(divContent);
+			}
+			
+				console.log(obj);
+			});
+		});		
+	}
+	function imageLoc(path2,val2){
+		var path = path2 + val2;
+		var var3 = val2.split("_");
+		return '<div class="responsive">'+
+		  '<div class="gallery">'+
+			'<a target="_blank" href="'+path+'">'+
+			  '<img src="'+path+'" alt="'+val2+'" width="600" height="400">'+
+			'</a>'+
+			'<div class="desc">'+var3[1]+'</div>'+
+		  '</div>'+
+		'</div>';	
+	}
+</script>
+</head>
+<body>
+
+<h2>Thief Tracking Summary From <span id="summaryDate"></span></h2>
+<div id="imgid"></div>
+<div class="clearfix"></div>
+</body>
+</html>

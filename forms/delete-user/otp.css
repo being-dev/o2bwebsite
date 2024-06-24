@@ -1,0 +1,70 @@
+.height-100 {
+  height: 100vh;
+}
+
+.card {
+  width: 400px;
+  border: none;
+  height: 300px;
+  box-shadow: 5px 20px 50px #000;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  border-radius: 60% / 10%;
+}
+
+.card h6 {
+  color: red;
+  font-size: 20px;
+}
+
+.inputs input {
+  width: 40px;
+  height: 40px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.card-2 {
+  background-color: #fff;
+  padding: 10px;
+  width: 350px;
+  height: 100px;
+  bottom: -50px;
+  left: 20px;
+  position: absolute;
+  border-radius: 5px;
+}
+
+.card-2 .content {
+  margin-top: 50px;
+}
+
+.card-2 .content a {
+  color: red;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 2px solid var(--primary-color);
+}
+
+.validate {
+  border-radius: 20px;
+  height: 40px;
+  background-color: red;
+  border: 1px solid red;
+  width: 140px;
+}
+
+:root {
+  primary-color: #839032;
+}

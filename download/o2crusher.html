@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>O2Crusher App Download</title>
+    <script type="text/javascript">
+      window.onload = function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            // Huawei Phone must come first because its UA also contains "Android"
+            if (userAgent.includes("HUAWEI")) {
+               //window.location.replace("https://appgallery.huawei.com/app/C101184875");
+            } else if (userAgent.includes("Android")) {
+                window.location.replace("market://details?id=com.o2biz.app.o2crusher");
+            } else if (userAgent.includes("iPhone")) {			
+                window.location.replace("itms-apps://itunes.apple.com/app/apple-store/id1609938610");
+                //window.location.replace("https://apps.apple.com/app/o2crusher/id1609938610");
+            } else {
+                //cant be sure about device, so redirect to home page
+                window.location.replace("https://o2bizservices.com/o2crusher/");
+            }
+        }
+    </script>
+</head>
+<body></body>
+</html>
